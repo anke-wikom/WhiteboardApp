@@ -1,0 +1,25 @@
+{
+  "name": "whiteboard-app-be",
+  "version": "1.0.0",
+  "description": "Backend for Whiteboard-App",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anke-wikom/WhiteboardApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anke-wikom/WhiteboardApp/issues"
+  },
+  "homepage": "https://github.com/anke-wikom/WhiteboardApp#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
