@@ -1,15 +1,9 @@
-# 🚀 Welcome to your new awesome project!
+# Whiteboard App
 
-This project has been created using **webpack-cli**, you can now run
-
-```
-npm run build
-```
-
-or
+Use
 
 ```
-yarn build
+yarn start
 ```
 
-to bundle your application
+to bundle your application and start the server.
