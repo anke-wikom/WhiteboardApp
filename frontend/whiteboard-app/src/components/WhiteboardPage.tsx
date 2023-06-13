@@ -4,7 +4,7 @@ import useNoteRequest from "../hooks/useNoteRequest";
 const WhiteboardPage = () => {
     const {notes} = useNoteRequest();
     return  (
-        <>
+        <div className="whiteBoardPageParent">
             <h1>Whiteboard</h1>
             <ul>
               {
@@ -18,7 +18,7 @@ const WhiteboardPage = () => {
               : (<div>Fehler beim Laden der Notizen</div>)
                }
             </ul>
-        </>
+        </div>
     );
 }
 
