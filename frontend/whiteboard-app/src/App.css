@@ -36,3 +36,70 @@
     transform: rotate(360deg);
   }
 }
+
+/*add button css*/
+
+.add-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.add-button:hover {
+  background-color: #45a049;
+}
+/*anote form css*/
+.note-form {
+  background-color: orange;
+  padding: 10px;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  
+  margin: 0 auto;
+  /*margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  margin: 0 auto;*/
+}
+
+
+
+.note-form input,
+.note-form textarea {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.note-form button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.note-form button:hover {
+  background-color: #45a049;
+}
+
+.add-note-button {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  
+}
+
+
+
+
