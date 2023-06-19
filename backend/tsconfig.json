@@ -1,0 +1,20 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "module": "ESNext",
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "files": ["./index.ts"],
+  "include": ["./**/*"],
+  "exclude": ["node_modules", ".vscode"],
+}

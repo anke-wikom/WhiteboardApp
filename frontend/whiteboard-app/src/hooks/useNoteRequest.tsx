@@ -29,9 +29,23 @@ const useNoteRequest = () => {
               setNotes(data);
             })
             .catch((err) => {
-            console.log(err.message);
+                console.log(err.message);
     
           });
+      }), []);
+
+      const fetchTest = useCallback((() => {
+        fetch(`http://localhost:3001/test/`, {
+            method: 'GET',
+            mode: 'cors',
+        })
+            .then((res) => res.body)
+            .then((data) => {
+            console.log(data);
+            })
+            .catch((err) => {
+                console.log(err.message);
+        })
       }), []);
 
       const saveNewNote = useCallback(((noteId: string) => {
@@ -40,6 +54,7 @@ const useNoteRequest = () => {
       }), [])
 
       useEffect(fetchAllNotes, [fetchAllNotes]);
+      useEffect(fetchTest, []);
 
       return {
         fetchAllNotes,

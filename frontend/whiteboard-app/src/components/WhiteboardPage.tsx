@@ -15,7 +15,7 @@ const WhiteboardPage = () => {
                   <div>{note.description}</div>
                 </li>
               )))
-              : (<div>Fehler beim Laden der Notizen</div>)
+              : (<div>Notizen werden geladen</div>)
                }
             </ul>
         </>

@@ -12,10 +12,10 @@ const notes = {
     3: {
         noteId: '3',
         title: 'Example Note 3',
-        description: 'Example description test data'
+        description: 'Example description test d'
     },
   }
 
-  export default {
-    notes,
-  };
+export default {
+  notes,
+};
