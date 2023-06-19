@@ -37,7 +37,7 @@
   }
 }
 
-/*add button css*/
+
 
 .add-button {
   background-color: #4CAF50;
@@ -50,32 +50,22 @@
 .add-button:hover {
   background-color: #45a049;
 }
-/*anote form css*/
+
 .note-form {
   background-color: orange;
   padding: 10px;
-  width: 50%;
-  align-items: center;
-  justify-content: center;
-  
+  width: 30%;
   margin: 0 auto;
-  /*margin-top: 10px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  margin: 0 auto;*/
+ 
+ 
 }
-
-
-
 .note-form input,
 .note-form textarea {
   margin-bottom: 10px;
   width: 100%;
 }
-
 .note-form button {
   background-color: #4CAF50;
   color: white;
@@ -84,11 +74,9 @@
   font-size: 16px;
   cursor: pointer;
 }
-
 .note-form button:hover {
-  background-color: #45a049;
+  background-color: #45A049;
 }
-
 .add-note-button {
   background-color: green;
   color: white;
@@ -96,9 +84,40 @@
   font-size: 16px;
   border: none;
   cursor: pointer;
-  margin-left: 10px;
-  
 }
+.AddNote{
+  background-color: #0B8E28;
+    color: white;
+  width: auto;
+  height: auto;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 0px;
+    border-radius: 3px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: default;
+}
+.Cancel{
+  background-color: #0B8E28;
+    color: white;
+   width: auto;
+   height: auto;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 0px;
+    margin-left: 0px;
+    border-radius: 3px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: default;
+}
+
+
+
+
+
 
 
 

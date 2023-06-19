@@ -1,14 +1,11 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-
-interface Note {
-  title: string;
-  description: string;
-}
+import Note from "../types";
 
 const WhiteboardPage = () => {
   const [noteForm, setNoteForm] = useState({
     title: "",
-    description: ""
+    description: "",
+    noteId: ""
   });
 
   const [notes, setNotes] = useState<Note[]>([]);
@@ -23,9 +20,13 @@ const WhiteboardPage = () => {
 
   const handleNoteSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const newNote: Note = { title: noteForm.title, description: noteForm.description };
+    const newNote: Note = {
+      noteId: noteForm.noteId,
+      title: noteForm.title,
+      description: noteForm.description
+    };
     setNotes([...notes, newNote]);
-    setNoteForm({ title: "", description: "" });
+    setNoteForm({ title: "", description: "", noteId: "" });
   };
 
   const handleAddNoteClick = () => {
@@ -37,6 +38,7 @@ const WhiteboardPage = () => {
   };
 
   return (
+    
     <>
       <h1>Whiteboard</h1>
       <ul>
@@ -48,10 +50,7 @@ const WhiteboardPage = () => {
         ))}
       </ul>
       {!isFormOpen ? (
-        <button
-          className="add-note-button"
-          onClick={handleAddNoteClick}
-        >
+        <button className="add-note-button" onClick={handleAddNoteClick}>
           + Add Note
         </button>
       ) : (
@@ -68,10 +67,22 @@ const WhiteboardPage = () => {
             placeholder="Description"
             value={noteForm.description}
             onChange={handleNoteChange}
+            style={{ width: "100%", height: "150px", resize: "vertical" }}
           />
-          <button type="submit">Add Note</button>
-          <button type="button" onClick={handleCancelClick}>Cancel</button>
+          <input
+            type="text"
+            name="noteId"
+            placeholder="Note ID"
+            value={noteForm.noteId}
+            onChange={handleNoteChange}
+            style={{ display: "none" }}
+          />
+          <button className="AddNote" type="submit">Add</button> 
+          <button  className="Cancel" type="button" onClick={handleCancelClick}>
+            Cancel
+          </button>
         </form>
+        
       )}
     </>
   );
