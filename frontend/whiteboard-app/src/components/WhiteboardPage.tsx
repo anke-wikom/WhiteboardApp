@@ -4,12 +4,12 @@ import Note from "../types";
 const WhiteboardPage = () => {
   const [noteForm, setNoteForm] = useState({
     title: "",
-    description: "",
-    noteId: ""
+    description: ""
   });
 
   const [notes, setNotes] = useState<Note[]>([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [lastNoteId, setLastNoteId] = useState(0);
 
   const handleNoteChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setNoteForm({
@@ -21,12 +21,13 @@ const WhiteboardPage = () => {
   const handleNoteSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const newNote: Note = {
-      noteId: noteForm.noteId,
+      noteId: lastNoteId + 1,
       title: noteForm.title,
       description: noteForm.description
     };
     setNotes([...notes, newNote]);
-    setNoteForm({ title: "", description: "", noteId: "" });
+    setNoteForm({ title: "", description: "" });
+    setLastNoteId(lastNoteId + 1);
   };
 
   const handleAddNoteClick = () => {
@@ -38,12 +39,11 @@ const WhiteboardPage = () => {
   };
 
   return (
-    
     <>
       <h1>Whiteboard</h1>
       <ul>
-        {notes.map((note, index) => (
-          <li key={index}>
+        {notes.map((note) => (
+          <li key={note.noteId}>
             <h3>{note.title}</h3>
             <div>{note.description}</div>
           </li>
@@ -67,25 +67,20 @@ const WhiteboardPage = () => {
             placeholder="Description"
             value={noteForm.description}
             onChange={handleNoteChange}
-            style={{ width: "100%", height: "150px", resize: "vertical" }}
-          />
-          <input
-            type="text"
-            name="noteId"
-            placeholder="Note ID"
-            value={noteForm.noteId}
-            onChange={handleNoteChange}
-            style={{ display: "none" }}
+            className="note-form-textarea"
+            
+            
           />
           <button className="AddNote" type="submit">Add</button> 
           <button  className="Cancel" type="button" onClick={handleCancelClick}>
             Cancel
           </button>
-        </form>
-        
+
+          </form>
       )}
     </>
   );
 };
 
 export default WhiteboardPage;
+

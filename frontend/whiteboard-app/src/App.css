@@ -114,6 +114,12 @@
     font-size: default;
 }
 
+.note-form-textarea {
+  width: 100%;
+  height: 150px;
+  resize: vertical;
+}
+
 
 
 
