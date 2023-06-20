@@ -9,12 +9,20 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "module": "ESNext",
+    "module": "ESNext"
   },
   "ts-node": {
-    "esm": true
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   },
-  "files": ["./index.ts"],
-  "include": ["./**/*"],
-  "exclude": ["node_modules", ".vscode"],
+  "files": [
+    "./index.ts"
+  ],
+  "include": [
+    "./**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    ".vscode"
+  ]
 }
