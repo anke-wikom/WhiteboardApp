@@ -1,7 +1,7 @@
 
 type Note = {
     description: string,
-    noteId: string,
+    noteId: number,
     title: string,
   }
 
