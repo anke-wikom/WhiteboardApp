@@ -5,7 +5,6 @@ import NotizBox from "./NotizBox";
 const WhiteboardPage = () => {
     const {notes} = useNoteRequest();
     return  (
-        <div className="whiteBoardPageParent">
           <div className="whiteBoardParent">
             <h1>Whiteboard</h1>
             <ul>
@@ -21,7 +20,6 @@ const WhiteboardPage = () => {
                }
             </ul>
             </div>
-        </div>
     );
 }
 

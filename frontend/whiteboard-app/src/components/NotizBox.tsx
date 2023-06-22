@@ -16,6 +16,10 @@ const NotizBox = ({noteId , title , description} : Note ) => {
                 <li>{description}</li>
             </ul>
         </div>
+        <div className="btn_Class_delete">
+            <button id='delete_btn' ><FaTrash /></button>
+    
+        </div>
     </div>
    </div>
       )
