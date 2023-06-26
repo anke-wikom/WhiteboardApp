@@ -12,6 +12,109 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+/*.logo {
+  width: 10%;
+}
+*/
+.header {
+  margin-top: -7px;
+  background-color: #363636;
+  padding: 2px;
+  
+  color: white;
+}
+
+/*.body {
+  background-color: black;
+  padding: 100px;
+  color: white;
+}*/
+
+.menu {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.menu img {
+  margin-top: 7px;
+  width: 50%;
+  margin-left: -70px;
+  
+}
+.neueNotiz{
+  height: 50px;
+  margin-left: -60px;
+  background-color: #535353;
+  color: white;
+  border: none;
+  font-family: Arial;
+  font-size: 18px;
+  margin-bottom: 2px;
+ 
+  
+}
+.notizbearbeiten{
+  height: 50px;
+  margin-left: 5px;
+  background-color: #535353;
+  font-family: Arial;
+  color: white;
+  border: none;
+  
+  font-size: 18px;
+  
+}
+
+.notizlöschen{
+  height: 50px;
+  margin-left: 5px;
+  background-color: #535353;
+  font-family: Arial;
+  color: white;
+  border: none;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.Notizlöschen img {
+  width: 5px; 
+  height: 5px;
+  margin-left: 5px; 
+}
+
+body {
+  background-color: rgb(25, 24, 24);
+  
+  
+}
+body.dark-mode {
+  background-color: rgb(25, 24, 24);
+}
+
+
+
+.box {
+  background-color: white;
+  padding: 60px;
+  border-radius: 10px;
+  display: flexbox;
+  width: 70%;
+  height: 40%;
+  margin: 0 auto;
+  margin-top: 50px;
+ 
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
 
 .App-header {
   background-color: #282c34;
@@ -23,6 +126,17 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.menu ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
 
 .App-link {
   color: #61dafb;
