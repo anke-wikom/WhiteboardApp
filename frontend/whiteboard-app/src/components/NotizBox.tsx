@@ -10,9 +10,8 @@ const NotizBox = ({noteId , title , description} : Note ) => {
         <div className="notizen_titel">
             <h1>{title}  </h1>
         </div>
-        <div className="notizen_deskription">
-            <ul>
-               
+        <div className="notizen_description">
+            <ul>           
                 <li>{description}</li>
             </ul>
         </div>
@@ -21,4 +20,4 @@ const NotizBox = ({noteId , title , description} : Note ) => {
       )
 }
 
-export default NotizBox
+export default NotizBox;
