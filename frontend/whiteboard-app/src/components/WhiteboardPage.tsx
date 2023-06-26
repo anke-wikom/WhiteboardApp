@@ -83,4 +83,3 @@ const WhiteboardPage = () => {
 };
 
 export default WhiteboardPage;
-
