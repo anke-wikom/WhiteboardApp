@@ -1,6 +1,5 @@
 import React from "react";
 import useNoteRequest from "../hooks/useNoteRequest";
-import NotizBox from "./NotizBox";
 
 const WhiteboardPage = () => {
     const {notes} = useNoteRequest();
@@ -11,10 +10,10 @@ const WhiteboardPage = () => {
               {
                 notes !== undefined
                ? (notes.map(note => (
-               <NotizBox  noteId= {note.noteId} 
-                key={note.noteId}
-                title= {note.title}
-                description={note.description}/>
+                <li key={note.noteId}>
+                <h3>{note.title}</h3>
+                <div>{note.description}</div>
+              </li>
               )))
               : (<div>Fehler beim Laden der Notizen</div>)
                }

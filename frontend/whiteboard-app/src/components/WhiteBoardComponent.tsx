@@ -1,7 +1,7 @@
 import React from 'react'
 import WhiteboardPage from './WhiteboardPage'
 
-const WhiteBoardKomponent = () => {
+const WhiteBoardComponent = () => {
   return (
     <div className='whiteBoardPageParent'>
       <WhiteboardPage />
@@ -9,4 +9,4 @@ const WhiteBoardKomponent = () => {
   )
 }
 
-export default WhiteBoardKomponent
+export default WhiteBoardComponent;
