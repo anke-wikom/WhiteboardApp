@@ -12,10 +12,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-/*.logo {
-  width: 10%;
-}
-*/
+
 .header {
   margin-top: -7px;
   background-color: #363636;
@@ -24,11 +21,6 @@
   color: white;
 }
 
-/*.body {
-  background-color: black;
-  padding: 100px;
-  color: white;
-}*/
 
 .menu {
   margin-top: 10px;
@@ -227,6 +219,22 @@ body.dark-mode {
     font-family: "Source Sans Pro", sans-serif;
     font-size: default;
 }
+
+.like-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem; 
+}‚
+.button-container button {
+  margin: 0 0.5rem; 
+}
+
+
+
+
+
+
+
 
 .note-form-textarea {
   width: 100%;

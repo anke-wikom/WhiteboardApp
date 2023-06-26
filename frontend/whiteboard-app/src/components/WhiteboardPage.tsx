@@ -1,5 +1,9 @@
-
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+
+import { FaPlus} from "react-icons/fa";
+import { FaPen} from 'react-icons/fa';
+import { FaTrash} from 'react-icons/fa';
+
 import Note from "../types";
 
 const WhiteboardPage = () => {
@@ -40,7 +44,6 @@ const WhiteboardPage = () => {
   };
 
   useEffect(() => {
-    
     document.body.classList.toggle("dark-mode", isFormOpen);
   }, [isFormOpen]);
 
@@ -61,22 +64,24 @@ const WhiteboardPage = () => {
               <img src={require("../images/logo2.png")} alt="Logo" />
             </li>
             <li>
-              <button className="neueNotiz" onClick={handleAddNoteClick}> + Neue Notiz</button>
-              
+              <button className="neueNotiz" onClick={handleAddNoteClick}>
+                 <FaPlus/> Neue Notiz</button>
             </li>
             <li>
-              <button className="notizbearbeiten" onClick={handleEditNote}> Notiz bearbeiten</button>
-              
+              <button className="notizbearbeiten" onClick={handleEditNote}>
+              < FaPen /> Notiz bearbeiten 
+              </button>
             </li>
             <li>
-              <button className="notizlöschen" onClick={handleDeleteNote}> Notiz löschen</button>
-             
-              
+              <button className="notizlöschen" onClick={handleDeleteNote}> 
+              <FaTrash/>  Notiz löschen
+              </button>
             </li>
           </ul>
         </nav>
       </header>
       <div className="body">
+      
         <div className="box">
           <ul>
             {notes.map((note) => (
@@ -102,17 +107,20 @@ const WhiteboardPage = () => {
                 onChange={handleNoteChange}
                 className="note-form-textarea"
               />
+              <div className="button-container">
               <button className="AddNote" type="submit">Add</button>
               <button className="Cancel" type="button" onClick={handleCancelClick}>
                 Cancel
               </button>
+              </div>
             </form>
+            
           )}
         </div>
+        
       </div>
     </div>
   );
 };
 
 export default WhiteboardPage;
-
