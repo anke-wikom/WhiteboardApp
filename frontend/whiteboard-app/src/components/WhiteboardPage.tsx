@@ -70,11 +70,26 @@ const WhiteboardPage = () => {
             <button onClick={() => handleDeleteNote(note.noteId)}>Delete</button>
           </li>
         ))}
+        {showDeleteDialog && (
+          <div className="dialog-box">
+            <p className="dialog-box-message">Are you sure you want to delete this note?</p>
+            <div className="dialog-box-buttons">
+              <button className="dialog-box-button delete" onClick={handleConfirmDelete}>
+                Delete
+              </button>
+              <button className="dialog-box-button cancel" onClick={handleCancelDelete}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
       </ul>
       {!isFormOpen ? (
-        <button className="add-note-button" onClick={handleAddNoteClick}>
-          + Add Note
-        </button>
+        <>
+          <button className="add-note-button" onClick={handleAddNoteClick}>
+            + Add Note
+          </button>
+        </>
       ) : (
         <form className="note-form" onSubmit={handleNoteSubmit}>
           <input
@@ -96,14 +111,6 @@ const WhiteboardPage = () => {
             Cancel
           </button>
         </form>
-      )}
-
-      {showDeleteDialog && (
-        <div className="delete-dialog">
-          <p>Are you sure you want to delete this note?</p>
-          <button onClick={handleConfirmDelete}>Delete</button>
-          <button onClick={handleCancelDelete}>Cancel</button>
-        </div>
       )}
     </>
   );
