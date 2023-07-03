@@ -12,3 +12,35 @@ code {
     monospace;
 }
 
+
+
+.whiteBoardParent_NotizBox{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.content_child{
+  position: relative;
+  height: 200px ;
+  background: #E4CE00;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  width: 250px;
+  word-wrap: break-word ;
+}
+
+
+.notizen_titel{
+  position: relative;
+  bottom: 4rem;
+  text-align: center;
+  font-size: 10px;
+}
+
+.notizen_description{
+  text-align: start;
+  position: relative;
+  bottom: 3rem;
+}
