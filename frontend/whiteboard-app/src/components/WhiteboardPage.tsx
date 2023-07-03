@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import Note from "../types";
-
+import { FaTrash } from 'react-icons/fa';
 const WhiteboardPage = () => {
   const [noteForm, setNoteForm] = useState({
     title: "",
@@ -38,6 +38,14 @@ const WhiteboardPage = () => {
     setIsFormOpen(false);
   };
 
+
+
+  // Handle delete
+
+  const handleDelete = (id : number) =>{
+      setNotes(notes.filter((element)=> element.noteId !== id));
+  }
+
   return (
     <>
       <h1>Whiteboard</h1>
@@ -46,6 +54,7 @@ const WhiteboardPage = () => {
           <li key={note.noteId}>
             <h3>{note.title}</h3>
             <div>{note.description}</div>
+            <button id='delete_btn' onClick={()=>handleDelete(note.noteId)} ><FaTrash /></button>
           </li>
         ))}
       </ul>
