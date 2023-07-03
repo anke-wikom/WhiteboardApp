@@ -3,7 +3,6 @@ import Note from "../types";
 import HeaderComponent from "./HeaderComponent";
 
 
-
 const WhiteboardPage = () => {
   const [noteForm, setNoteForm] = useState({
     title: "",

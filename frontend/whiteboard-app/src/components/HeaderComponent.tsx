@@ -21,17 +21,17 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({
           </li>
           <li>
             <button className="neueNotiz" onClick={handleAddNoteClick}>
-              <FaPlus /> Neue Notiz
+              <FaPlus className="FaPlus"/> Neue Notiz
             </button>
           </li>
           <li>
             <button className="notizbearbeiten" onClick={handleEditNote}>
-              <FaPen /> Notiz bearbeiten
+              <FaPen className="FaPlus" /> Notiz bearbeiten
             </button>
           </li>
           <li>
             <button className="notizloeschen" onClick={handleDeleteNote}>
-              <FaTrash /> Notiz löschen
+              <FaTrash className="FaPlus"/> Notiz löschen
             </button>
           </li>
         </ul>

@@ -21,7 +21,7 @@
   width: 50%;
   margin-left: -70px;
 }
-.neueNotiz{
+.neueNotiz {
   height: 50px;
   margin-left: -60px;
   background-color: #535353;
@@ -31,7 +31,11 @@
   font-size: 18px;
   margin-bottom: 2px;
 }
-.notizbearbeiten{
+.FaPlus{
+  text-align: center;
+  height: 0.85rem;
+}
+.notizbearbeiten {
   height: 50px;
   margin-left: 5px;
   background-color: #535353;
@@ -41,7 +45,7 @@
   font-size: 18px;
   
 }
-.notizloeschen{
+.notizloeschen {
   height: 50px;
   margin-left: 5px;
   background-color: #535353;
@@ -49,12 +53,7 @@
   color: white;
   border: none;
   font-size: 18px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 0px;
-  margin-top: 0px;
 }
-
 .Notizloeschen img {
   width: 5px; 
   height: 5px;
@@ -170,6 +169,8 @@ body {
   height: 150px;
   resize: vertical;
 }
+
+
 
 
 
