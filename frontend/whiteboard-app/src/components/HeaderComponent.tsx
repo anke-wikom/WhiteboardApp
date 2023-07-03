@@ -1,17 +1,12 @@
 import React from 'react';
 import { FaPlus, FaPen, FaTrash } from 'react-icons/fa';
 
-interface HeaderComponentProps {
+type HeaderComponentProps = {
   handleAddNoteClick: () => void;
   handleEditNote: () => void;
   handleDeleteNote: () => void;
-}
-
-const HeaderComponent: React.FC<HeaderComponentProps> = ({
-  handleAddNoteClick,
-  handleEditNote,
-  handleDeleteNote
-}) => {
+};
+const HeaderComponent = ({ handleAddNoteClick, handleEditNote, handleDeleteNote }: HeaderComponentProps) => {
   return (
     <header className="header">
       <nav className="menu">
