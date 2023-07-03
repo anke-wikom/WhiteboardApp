@@ -1,44 +1,90 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+  margin-top: -7px;
+  background-color: #363636;
+  padding: 2px;
+  color:#D9D9D9;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.menu {
+  margin-top: 10px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+}
+.menu img {
+  margin-top: 7px;
+  width: 50%;
+  margin-left: -70px;
+}
+.neueNotiz {
+  height: 50px;
+  margin-left: -60px;
+  background-color: #535353;
+  color: white;
+  border: none;
+  font-family: Arial;
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+.FaPlus{
+  text-align: center;
+  height: 0.85rem;
+}
+.notizbearbeiten {
+  height: 50px;
+  margin-left: 5px;
+  background-color: #535353;
+  font-family: Arial;
+  color: white;
+  border: none;
+  font-size: 18px;
+  
+}
+.notizloeschen {
+  height: 50px;
+  margin-left: 5px;
+  background-color: #535353;
+  font-family: Arial;
+  color: white;
+  border: none;
+  font-size: 18px;
+}
+.Notizloeschen img {
+  width: 5px; 
+  height: 5px;
+  margin-left: 5px; 
+}
+body {
+  background-color: #1E1E1E;
+}
+.box {
+  background-color: white;
+  padding: 60px;
+  border-radius: 10px;
+  display: flexbox;
+  width: 70%;
+  height: 40%;
+  margin: 0 auto;
+  margin-top: 50px;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
 }
-
-.App-link {
-  color: #61dafb;
+.menu ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-
 .add-button {
   background-color: #4CAF50;
   color: white;
@@ -50,16 +96,13 @@
 .add-button:hover {
   background-color: #45a049;
 }
-
 .note-form {
   background-color: orange;
   padding: 10px;
-  width: 30%;
+  width: 15rem;
   margin: 0 auto;
   align-items: center;
   justify-content: center;
- 
- 
 }
 .note-form input,
 .note-form textarea {
@@ -87,39 +130,45 @@
 }
 .AddNote{
   background-color: #0B8E28;
-    color: white;
+  color: white;
   width: auto;
   height: auto;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 10px;
-    margin-left: 0px;
-    border-radius: 3px;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: default;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 0px;
+  border-radius: 3px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: default;
 }
 .Cancel{
   background-color: #0B8E28;
-    color: white;
-   width: auto;
-   height: auto;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 0px;
-    margin-left: 0px;
-    border-radius: 3px;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: default;
+  color: white;
+  width: auto;
+  height: auto;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 0px;
+  margin-left: 0px;
+  border-radius: 3px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: default;
 }
-
+.like-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem; 
+}
+.button-container button {
+  margin: 0 0.5rem; 
+}
 .note-form-textarea {
   width: 100%;
   height: 150px;
   resize: vertical;
 }
-
 
 
 
