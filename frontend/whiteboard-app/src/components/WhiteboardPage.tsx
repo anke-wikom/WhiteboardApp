@@ -10,6 +10,8 @@ const WhiteboardPage = () => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [lastNoteId, setLastNoteId] = useState(0);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [deleteNoteId, setDeleteNoteId] = useState<number | null>(null);
 
   const handleNoteChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setNoteForm({
@@ -38,6 +40,25 @@ const WhiteboardPage = () => {
     setIsFormOpen(false);
   };
 
+  const handleDeleteNote = (noteId: number) => {
+    setDeleteNoteId(noteId);
+    setShowDeleteDialog(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (deleteNoteId !== null) {
+      const updatedNotes = notes.filter((note) => note.noteId !== deleteNoteId);
+      setNotes(updatedNotes);
+      setShowDeleteDialog(false);
+      setDeleteNoteId(null);
+    }
+  };
+
+  const handleCancelDelete = () => {
+    setShowDeleteDialog(false);
+    setDeleteNoteId(null);
+  };
+
   return (
     <>
       <h1>Whiteboard</h1>
@@ -46,6 +67,7 @@ const WhiteboardPage = () => {
           <li key={note.noteId}>
             <h3>{note.title}</h3>
             <div>{note.description}</div>
+            <button onClick={() => handleDeleteNote(note.noteId)}>Delete</button>
           </li>
         ))}
       </ul>
@@ -68,15 +90,20 @@ const WhiteboardPage = () => {
             value={noteForm.description}
             onChange={handleNoteChange}
             className="note-form-textarea"
-            
-            
           />
-          <button className="AddNote" type="submit">Add</button> 
-          <button  className="Cancel" type="button" onClick={handleCancelClick}>
+          <button className="AddNote" type="submit">Add</button>
+          <button className="Cancel" type="button" onClick={handleCancelClick}>
             Cancel
           </button>
+        </form>
+      )}
 
-          </form>
+      {showDeleteDialog && (
+        <div className="delete-dialog">
+          <p>Are you sure you want to delete this note?</p>
+          <button onClick={handleConfirmDelete}>Delete</button>
+          <button onClick={handleCancelDelete}>Cancel</button>
+        </div>
       )}
     </>
   );
