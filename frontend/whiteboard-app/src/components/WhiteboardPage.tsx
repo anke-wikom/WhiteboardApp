@@ -1,10 +1,12 @@
 import React from "react";
 import useNoteRequest from "../hooks/useNoteRequest";
+import WhiteBoardComponent from "./WhiteBoardComponent";
 
 const WhiteboardPage = () => {
     const {notes} = useNoteRequest();
     return  (
           <div className="whiteBoardParent">
+            <WhiteBoardComponent/>
             <h1>Whiteboard</h1>
             <ul>
               {

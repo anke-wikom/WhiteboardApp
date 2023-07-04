@@ -1,10 +1,8 @@
-import React from 'react'
-import WhiteboardPage from './WhiteboardPage'
+import React from 'react';
 
 const WhiteBoardComponent = () => {
   return (
     <div className='whiteBoardPageParent'>
-      <WhiteboardPage />
     </div>
   )
 }
