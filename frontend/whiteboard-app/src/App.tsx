@@ -2,12 +2,10 @@ import React from 'react';
 import './App.css';
 import WhiteboardPage from './components/WhiteboardPage';
 
-const App = () => {
-  return (
+const App = () => (
     <div className="App">
-      <WhiteboardPage/>
+        <WhiteboardPage />
     </div>
-  );
-}
+);
 
 export default App;

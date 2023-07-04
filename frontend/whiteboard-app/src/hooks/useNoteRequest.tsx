@@ -1,68 +1,66 @@
-import { useCallback, useEffect, useState } from "react";
-import Note from "../types";
+import { useCallback, useEffect, useState } from 'react';
+import Note from '../types';
 
 const useNoteRequest = () => {
     const [notes, setNotes] = useState<Note[]>();
     const fetchNote = useCallback((noteId: string) => {
         fetch(`http://localhost:3001/notes/${noteId}/`, {
-          method: 'GET',
-          mode: 'cors',
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data.noteId);
-            setNotes([...data]);
-          })
-          .catch((err) => {
-          console.log(err.message);
-        });
-      }, []);
-
-      const fetchAllNotes = useCallback((() => {
-        fetch(`http://localhost:3001/notes/`, {
             method: 'GET',
-            mode: 'cors',
-          })
+            mode: 'cors'
+        })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
-              setNotes(data);
+                console.log(data.noteId);
+                setNotes([...data]);
             })
             .catch((err) => {
                 console.log(err.message);
-    
-          });
-      }), []);
+            });
+    }, []);
 
-      const fetchTest = useCallback((() => {
-        fetch(`http://localhost:3001/test/`, {
+    const fetchAllNotes = useCallback(() => {
+        fetch(`http://localhost:3001/notes/`, {
             method: 'GET',
-            mode: 'cors',
+            mode: 'cors'
         })
-            .then((res) => res.body)
+            .then((res) => res.json())
             .then((data) => {
-            console.log(data);
+                console.log(data);
+                setNotes(data);
             })
             .catch((err) => {
                 console.log(err.message);
-        })
-      }), []);
+            });
+    }, []);
 
-      const saveNewNote = useCallback(((noteId: string) => {
+    // const fetchTest = useCallback(() => {
+    //     fetch(`http://localhost:3001/test/`, {
+    //         method: 'GET',
+    //         mode: 'cors'
+    //     })
+    //         .then((res) => res.body)
+    //         .then((data) => {
+    //             console.log(data);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err.message);
+    //         });
+    // }, []);
+
+    const saveNewNote = useCallback((noteId: string) => {
         // @TODO
-        console.log("save new note with id:", noteId);
-      }), [])
+        console.log('save new note with id:', noteId);
+    }, []);
 
-      useEffect(fetchAllNotes, [fetchAllNotes]);
-      useEffect(fetchTest, []);
+    useEffect(fetchAllNotes, [fetchAllNotes]);
+    // useEffect(fetchTest, []);
 
-      return {
+    return {
         fetchAllNotes,
         fetchNote,
         saveNewNote,
-        notes,
-      }
-
-}
+        notes
+    };
+};
 
 export default useNoteRequest;
