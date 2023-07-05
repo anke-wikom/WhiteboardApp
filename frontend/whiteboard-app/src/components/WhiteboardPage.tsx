@@ -78,7 +78,7 @@ const WhiteboardPage = () => {
               <li key={note.noteId}>
                 <h3>{note.title}</h3>
                 <div>{note.description}</div>
-                <button onClick={() => { setSelectedNote(note); setShowDeleteDialog(true); }}>Delete</button>
+                <button onClick={() => { setSelectedNote(note); setShowDeleteDialog(true); }}>Löschen</button>
               </li>
             ))}
           </ul>
@@ -100,23 +100,23 @@ const WhiteboardPage = () => {
               />
               <div className="button-container">
                 <button className="AddNote" type="submit">
-                  Add
+                  Hinzufügen
                 </button>
                 <button className="Cancel" type="button" onClick={handleCancelClick}>
-                  Cancel
+                  Abbrechen
                 </button>
               </div>
             </form>
           )}
           {showDeleteDialog && (
             <div className="dialog-box">
-              <p className="dialog-box-message">Are you sure you want to delete this note?</p>
+              <p className="dialog-box-message">Sind Sie sicher, dass sie die Notiz löschen wollen?</p>
               <div className="dialog-box-buttons">
                 <button className="dialog-box-button delete" onClick={handleConfirmDelete}>
-                  Delete
+                  Ja
                 </button>
                 <button className="dialog-box-button cancel" onClick={handleCancelDelete}>
-                  Cancel
+                  Nein
                 </button>
               </div>
             </div>
