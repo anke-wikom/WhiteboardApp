@@ -42,12 +42,12 @@ const WhiteboardPage = () => {
   };
 
   const handleEditNote = () => {
-    // Handle edit note logic
+   
   };
 
   const handleDeleteNote = () => {
     if (selectedNote) {
-      // Handle delete note logic
+      
       const updatedNotes = notes.filter((note) => note.noteId !== selectedNote.noteId);
       setNotes(updatedNotes);
       setSelectedNote(null);
