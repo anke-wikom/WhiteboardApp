@@ -2,7 +2,6 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import Note from "../types";
 import HeaderComponent from "./HeaderComponent";
 
-
 const WhiteboardPage = () => {
   const [noteForm, setNoteForm] = useState({
     title: "",
@@ -12,6 +11,8 @@ const WhiteboardPage = () => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [lastNoteId, setLastNoteId] = useState(0);
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const handleNoteChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setNoteForm({
@@ -41,11 +42,26 @@ const WhiteboardPage = () => {
   };
 
   const handleEditNote = () => {
-    
+   
   };
 
   const handleDeleteNote = () => {
-   
+    if (selectedNote) {
+      
+      const updatedNotes = notes.filter((note) => note.noteId !== selectedNote.noteId);
+      setNotes(updatedNotes);
+      setSelectedNote(null);
+      setShowDeleteDialog(false);
+    }
+  };
+
+  const handleConfirmDelete = () => {
+    handleDeleteNote();
+  };
+
+  const handleCancelDelete = () => {
+    setSelectedNote(null);
+    setShowDeleteDialog(false);
   };
 
   return (
@@ -53,7 +69,7 @@ const WhiteboardPage = () => {
       <HeaderComponent
         handleAddNoteClick={handleAddNoteClick}
         handleEditNote={handleEditNote}
-        handleDeleteNote={handleDeleteNote}
+        handleDeleteNote={() => setShowDeleteDialog(true)}
       />
       <div className="body">
         <div className="box">
@@ -62,6 +78,7 @@ const WhiteboardPage = () => {
               <li key={note.noteId}>
                 <h3>{note.title}</h3>
                 <div>{note.description}</div>
+                <button onClick={() => { setSelectedNote(note); setShowDeleteDialog(true); }}>Löschen</button>
               </li>
             ))}
           </ul>
@@ -83,13 +100,26 @@ const WhiteboardPage = () => {
               />
               <div className="button-container">
                 <button className="AddNote" type="submit">
-                  Add
+                  Hinzufügen
                 </button>
                 <button className="Cancel" type="button" onClick={handleCancelClick}>
-                  Cancel
+                  Abbrechen
                 </button>
               </div>
             </form>
+          )}
+          {showDeleteDialog && (
+            <div className="dialog-box">
+              <p className="dialog-box-message">Sind Sie sicher, dass sie die Notiz löschen wollen?</p>
+              <div className="dialog-box-buttons">
+                <button className="dialog-box-button delete" onClick={handleConfirmDelete}>
+                  Ja
+                </button>
+                <button className="dialog-box-button cancel" onClick={handleCancelDelete}>
+                  Nein
+                </button>
+              </div>
+            </div>
           )}
         </div>
       </div>
