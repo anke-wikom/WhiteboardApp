@@ -2,7 +2,6 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import Note from "../types";
 import HeaderComponent from "./HeaderComponent";
 
-
 const WhiteboardPage = () => {
   const [noteForm, setNoteForm] = useState({
     title: "",
@@ -12,6 +11,8 @@ const WhiteboardPage = () => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [lastNoteId, setLastNoteId] = useState(0);
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const handleNoteChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setNoteForm({
@@ -41,11 +42,26 @@ const WhiteboardPage = () => {
   };
 
   const handleEditNote = () => {
-    
+    // Handle edit note logic
   };
 
   const handleDeleteNote = () => {
-   
+    if (selectedNote) {
+      // Handle delete note logic
+      const updatedNotes = notes.filter((note) => note.noteId !== selectedNote.noteId);
+      setNotes(updatedNotes);
+      setSelectedNote(null);
+      setShowDeleteDialog(false);
+    }
+  };
+
+  const handleConfirmDelete = () => {
+    handleDeleteNote();
+  };
+
+  const handleCancelDelete = () => {
+    setSelectedNote(null);
+    setShowDeleteDialog(false);
   };
 
   return (
@@ -53,7 +69,7 @@ const WhiteboardPage = () => {
       <HeaderComponent
         handleAddNoteClick={handleAddNoteClick}
         handleEditNote={handleEditNote}
-        handleDeleteNote={handleDeleteNote}
+        handleDeleteNote={() => setShowDeleteDialog(true)}
       />
       <div className="body">
         <div className="box">
@@ -62,6 +78,7 @@ const WhiteboardPage = () => {
               <li key={note.noteId}>
                 <h3>{note.title}</h3>
                 <div>{note.description}</div>
+                <button onClick={() => { setSelectedNote(note); setShowDeleteDialog(true); }}>Delete</button>
               </li>
             ))}
           </ul>
@@ -90,6 +107,19 @@ const WhiteboardPage = () => {
                 </button>
               </div>
             </form>
+          )}
+          {showDeleteDialog && (
+            <div className="dialog-box">
+              <p className="dialog-box-message">Are you sure you want to delete this note?</p>
+              <div className="dialog-box-buttons">
+                <button className="dialog-box-button delete" onClick={handleConfirmDelete}>
+                  Delete
+                </button>
+                <button className="dialog-box-button cancel" onClick={handleCancelDelete}>
+                  Cancel
+                </button>
+              </div>
+            </div>
           )}
         </div>
       </div>
