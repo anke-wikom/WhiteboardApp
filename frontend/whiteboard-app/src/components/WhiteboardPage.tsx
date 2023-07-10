@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import Note from "../types";
 import HeaderComponent from "./HeaderComponent";
+import WhiteboardComponent from "./WhiteboardComponent";
 
 const WhiteboardPage = () => {
   const [noteForm, setNoteForm] = useState({
@@ -72,17 +73,8 @@ const WhiteboardPage = () => {
         handleDeleteNote={() => setShowDeleteDialog(true)}
       />
       <div className="body">
-        <div className="box">
-          <ul>
-            {notes.map((note) => (
-              <li key={note.noteId}>
-                <h3>{note.title}</h3>
-                <div>{note.description}</div>
-                <button onClick={() => { setSelectedNote(note); setShowDeleteDialog(true); }}>Löschen</button>
-              </li>
-            ))}
-          </ul>
-          {isFormOpen && (
+        <WhiteboardComponent notes={notes}/>
+        {isFormOpen && (
             <form className="note-form" onSubmit={handleNoteSubmit}>
               <input
                 type="text"
@@ -121,7 +113,6 @@ const WhiteboardPage = () => {
               </div>
             </div>
           )}
-        </div>
       </div>
     </div>
   );
