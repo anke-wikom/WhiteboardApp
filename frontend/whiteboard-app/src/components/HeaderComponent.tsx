@@ -6,6 +6,7 @@ type HeaderComponentProps = {
   handleEditNote: () => void;
   handleDeleteNote: () => void;
 };
+
 const HeaderComponent = ({ handleAddNoteClick, handleEditNote, handleDeleteNote }: HeaderComponentProps) => {
   return (
     <header className="header">
