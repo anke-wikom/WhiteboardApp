@@ -1,5 +1,6 @@
 import React from "react";
 import Note from '../types';
+import NotizComponent from "./NotizComponent";
 
 type Props = {
     notes: Note[],
@@ -10,10 +11,7 @@ const WhiteboardComponent = ({notes}: Props) => {
     <div className="box">
         <ul>
           {notes.map((note) => (
-            <li key={note.noteId}>
-              <h3>{note.title}</h3>
-              <div>{note.description}</div>
-            </li>
+           <NotizComponent noteId={note.noteId} title={note.title} description={note.description} />
           ))}
         </ul>
       </div>
