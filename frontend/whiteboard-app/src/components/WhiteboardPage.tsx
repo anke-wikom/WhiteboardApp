@@ -1,7 +1,8 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, MouseEvent } from "react";
 import Note from "../types";
 import HeaderComponent from "./HeaderComponent";
 import WhiteboardComponent from "./WhiteboardComponent";
+
 
 const WhiteboardPage = () => {
   const [noteForm, setNoteForm] = useState({
@@ -14,6 +15,11 @@ const WhiteboardPage = () => {
   const [lastNoteId, setLastNoteId] = useState(0);
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
+  // Ajouter les états pour le déplacement du formulaire
+  const [isFormDragging, setIsFormDragging] = useState(false);
+  const [offsetX, setOffsetX] = useState(0);
+  const [offsetY, setOffsetY] = useState(0);
 
   const handleNoteChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setNoteForm({
@@ -68,6 +74,29 @@ const WhiteboardPage = () => {
     setShowDeleteDialog(false);
   };
 
+  // Fonction pour gérer le début du déplacement du formulaire
+  const handleFormDragStart = (event: MouseEvent<HTMLFormElement>) => {
+    setIsFormDragging(true);
+    setOffsetX(event.clientX - event.currentTarget.offsetLeft);
+    setOffsetY(event.clientY - event.currentTarget.offsetTop);
+  };
+
+  // Fonction pour gérer le déplacement du formulaire
+  const handleFormDrag = (event: MouseEvent<HTMLFormElement>) => {
+    if (isFormDragging) {
+      const newLeft = event.clientX - offsetX;
+      const newTop = event.clientY - offsetY;
+
+      event.currentTarget.style.left = `${newLeft}px`;
+      event.currentTarget.style.top = `${newTop}px`;
+    }
+  };
+
+  // Fonction pour gérer la fin du déplacement du formulaire
+  const handleFormDragEnd = () => {
+    setIsFormDragging(false);
+  };
+
   return (
     <div>
       <HeaderComponent
@@ -78,7 +107,14 @@ const WhiteboardPage = () => {
       <div className="body">
         <WhiteboardComponent notes={notes} handleDeleteNote={handleDeleteNote} />
         {isFormOpen && (
-          <form className="note-form" onSubmit={handleNoteSubmit}>
+          <form
+            className="note-form"
+            onSubmit={handleNoteSubmit}
+            onMouseDown={handleFormDragStart}
+            onMouseMove={handleFormDrag}
+            onMouseUp={handleFormDragEnd}
+            
+          >
             <input
               type="text"
               name="title"
