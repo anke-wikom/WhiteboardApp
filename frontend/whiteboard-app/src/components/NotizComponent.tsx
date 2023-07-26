@@ -14,11 +14,11 @@ const NotizComponent = ({ noteId, title, description, handleDeleteNote }: NotizC
   return (
     <div className='whiteBoardParent_NotizBox  content_child'>
       <div className="notizen_titel">
-        <h1>{title}</h1>
         {/* Bouton pour supprimer la note */}
         <button className="delete_btn" onClick={() => handleDeleteNote(noteId)}>
           <FaTrash />
         </button>
+        <h1>{title}</h1>
       </div>
       <div className="notizen_description">
         <ul>
