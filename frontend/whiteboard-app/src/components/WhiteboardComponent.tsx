@@ -4,7 +4,7 @@ import NotizComponent from "./NotizComponent";
 
 type WhiteboardComponentProps = {
   notes: Note[];
-  handleDeleteNote: (noteId: number) => void; // Assurez-vous que le prop handleDeleteNote est déclaré ici
+  handleDeleteNote: (noteId: number) => void; 
 }
 
 const WhiteboardComponent = ({ notes, handleDeleteNote }: WhiteboardComponentProps) => {
@@ -17,7 +17,7 @@ const WhiteboardComponent = ({ notes, handleDeleteNote }: WhiteboardComponentPro
             noteId={note.noteId}
             title={note.title}
             description={note.description}
-            handleDeleteNote={handleDeleteNote} // Assurez-vous que le prop handleDeleteNote est passé ici
+            handleDeleteNote={handleDeleteNote} 
           />
         ))}
       </ul>

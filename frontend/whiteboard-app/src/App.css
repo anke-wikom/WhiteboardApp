@@ -226,4 +226,10 @@ body {
    margin-left: 110px;
    
   }
+
+  .notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
   
