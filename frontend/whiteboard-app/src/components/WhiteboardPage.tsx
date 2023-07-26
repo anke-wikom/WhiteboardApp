@@ -43,21 +43,24 @@ const WhiteboardPage = () => {
   };
 
   const handleEditNote = () => {
-   
+    // La logique pour éditer une note peut être ajoutée ici
   };
 
-  const handleDeleteNote = () => {
-    if (selectedNote) {
-      
-      const updatedNotes = notes.filter((note) => note.noteId !== selectedNote.noteId);
-      setNotes(updatedNotes);
-      setSelectedNote(null);
-      setShowDeleteDialog(false);
+  const handleDeleteNote = (noteId: number) => {
+    const noteToDelete = notes.find((note) => note.noteId === noteId);
+    if (noteToDelete) {
+      setSelectedNote(noteToDelete);
+      setShowDeleteDialog(true);
     }
   };
 
   const handleConfirmDelete = () => {
-    handleDeleteNote();
+    if (selectedNote) {
+      const updatedNotes = notes.filter((note) => note.noteId !== selectedNote.noteId);
+      setNotes(updatedNotes);
+    }
+    setSelectedNote(null);
+    setShowDeleteDialog(false);
   };
 
   const handleCancelDelete = () => {
@@ -70,49 +73,49 @@ const WhiteboardPage = () => {
       <HeaderComponent
         handleAddNoteClick={handleAddNoteClick}
         handleEditNote={handleEditNote}
-        handleDeleteNote={() => setShowDeleteDialog(true)}
+        handleDeleteNote={() => handleDeleteNote(0)} // 0 est juste une valeur arbitraire pour ouvrir la boîte de dialogue depuis le début
       />
       <div className="body">
-        <WhiteboardComponent notes={notes}/>
+        <WhiteboardComponent notes={notes} handleDeleteNote={handleDeleteNote} />
         {isFormOpen && (
-            <form className="note-form" onSubmit={handleNoteSubmit}>
-              <input
-                type="text"
-                name="title"
-                placeholder="Title"
-                value={noteForm.title}
-                onChange={handleNoteChange}
-              />
-              <textarea
-                name="description"
-                placeholder="Description"
-                value={noteForm.description}
-                onChange={handleNoteChange}
-                className="note-form-textarea"
-              />
-              <div className="button-container">
-                <button className="AddNote" type="submit">
-                  Hinzufügen
-                </button>
-                <button className="Cancel" type="button" onClick={handleCancelClick}>
-                  Abbrechen
-                </button>
-              </div>
-            </form>
-          )}
-          {showDeleteDialog && (
-            <div className="dialog-box">
-              <p className="dialog-box-message">Sind Sie sicher, dass sie die Notiz löschen wollen?</p>
-              <div className="dialog-box-buttons">
-                <button className="dialog-box-button delete" onClick={handleConfirmDelete}>
-                  Ja
-                </button>
-                <button className="dialog-box-button cancel" onClick={handleCancelDelete}>
-                  Nein
-                </button>
-              </div>
+          <form className="note-form" onSubmit={handleNoteSubmit}>
+            <input
+              type="text"
+              name="title"
+              placeholder="Title"
+              value={noteForm.title}
+              onChange={handleNoteChange}
+            />
+            <textarea
+              name="description"
+              placeholder="Description"
+              value={noteForm.description}
+              onChange={handleNoteChange}
+              className="note-form-textarea"
+            />
+            <div className="button-container">
+              <button className="AddNote" type="submit">
+                Hinzufügen
+              </button>
+              <button className="Cancel" type="button" onClick={handleCancelClick}>
+                Abbrechen
+              </button>
             </div>
-          )}
+          </form>
+        )}
+        {showDeleteDialog && (
+          <div className="dialog-box">
+            <p className="dialog-box-message">Sind Sie sicher, dass sie die Notiz löschen wollen?</p>
+            <div className="dialog-box-buttons">
+              <button className="dialog-box-button delete" onClick={handleConfirmDelete}>
+                Ja
+              </button>
+              <button className="dialog-box-button cancel" onClick={handleCancelDelete}>
+                Nein
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
