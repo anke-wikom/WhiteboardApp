@@ -3,7 +3,6 @@ import Note from "../types";
 import HeaderComponent from "./HeaderComponent";
 import WhiteboardComponent from "./WhiteboardComponent";
 
-
 const WhiteboardPage = () => {
   const [noteForm, setNoteForm] = useState({
     title: "",
@@ -16,10 +15,16 @@ const WhiteboardPage = () => {
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
-  // Ajouter les états pour le déplacement du formulaire
+  
   const [isFormDragging, setIsFormDragging] = useState(false);
   const [offsetX, setOffsetX] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
+
+  
+  const [isDialogDragging, setIsDialogDragging] = useState(false);
+  const [dialogOffsetX, setDialogOffsetX] = useState(0);
+  const [dialogOffsetY, setDialogOffsetY] = useState(0);
+  const [dialogPosition, setDialogPosition] = useState({ top: "50%", left: "50%" });
 
   const handleNoteChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setNoteForm({
@@ -49,7 +54,7 @@ const WhiteboardPage = () => {
   };
 
   const handleEditNote = () => {
-    // La logique pour éditer une note peut être ajoutée ici
+    
   };
 
   const handleDeleteNote = (noteId: number) => {
@@ -74,14 +79,14 @@ const WhiteboardPage = () => {
     setShowDeleteDialog(false);
   };
 
-  // Fonction pour gérer le début du déplacement du formulaire
+  
   const handleFormDragStart = (event: MouseEvent<HTMLFormElement>) => {
     setIsFormDragging(true);
     setOffsetX(event.clientX - event.currentTarget.offsetLeft);
     setOffsetY(event.clientY - event.currentTarget.offsetTop);
   };
 
-  // Fonction pour gérer le déplacement du formulaire
+  
   const handleFormDrag = (event: MouseEvent<HTMLFormElement>) => {
     if (isFormDragging) {
       const newLeft = event.clientX - offsetX;
@@ -92,9 +97,31 @@ const WhiteboardPage = () => {
     }
   };
 
-  // Fonction pour gérer la fin du déplacement du formulaire
+  
   const handleFormDragEnd = () => {
     setIsFormDragging(false);
+  };
+
+  
+  const handleDialogDragStart = (event: MouseEvent<HTMLDivElement>) => {
+    setIsDialogDragging(true);
+    setDialogOffsetX(event.clientX - event.currentTarget.offsetLeft);
+    setDialogOffsetY(event.clientY - event.currentTarget.offsetTop);
+  };
+
+  
+  const handleDialogDrag = (event: MouseEvent<HTMLDivElement>) => {
+    if (isDialogDragging) {
+      const newLeft = event.clientX - dialogOffsetX;
+      const newTop = event.clientY - dialogOffsetY;
+
+      setDialogPosition({ top: `${newTop}px`, left: `${newLeft}px` });
+    }
+  };
+
+  
+  const handleDialogDragEnd = () => {
+    setIsDialogDragging(false);
   };
 
   return (
@@ -102,7 +129,7 @@ const WhiteboardPage = () => {
       <HeaderComponent
         handleAddNoteClick={handleAddNoteClick}
         handleEditNote={handleEditNote}
-        handleDeleteNote={() => handleDeleteNote(0)} // 0 est juste une valeur arbitraire pour ouvrir la boîte de dialogue depuis le début
+        handleDeleteNote={() => handleDeleteNote(0)} 
       />
       <div className="body">
         <WhiteboardComponent notes={notes} handleDeleteNote={handleDeleteNote} />
@@ -113,7 +140,6 @@ const WhiteboardPage = () => {
             onMouseDown={handleFormDragStart}
             onMouseMove={handleFormDrag}
             onMouseUp={handleFormDragEnd}
-            
           >
             <input
               type="text"
@@ -140,7 +166,13 @@ const WhiteboardPage = () => {
           </form>
         )}
         {showDeleteDialog && (
-          <div className="dialog-box">
+          <div
+            className="dialog-box"
+            onMouseDown={handleDialogDragStart}
+            onMouseMove={handleDialogDrag}
+            onMouseUp={handleDialogDragEnd}
+            style={{ ...dialogPosition, transform: "translate(-50%, -50%)" }}
+          >
             <p className="dialog-box-message">Sind Sie sicher, dass sie die Notiz löschen wollen?</p>
             <div className="dialog-box-buttons">
               <button className="dialog-box-button delete" onClick={handleConfirmDelete}>
